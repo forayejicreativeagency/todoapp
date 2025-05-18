@@ -1,0 +1,333 @@
+// Import color variables
+@import 'colors';
+// Import fonts
+@import 'fonts';
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+body {
+    background-color: $white;
+    color: $black;
+    background: rgb(225, 225, 225, 0.5);
+    overflow: hidden;
+    height: 100vh;
+    font-family: $font-ancizar;
+    @include font-style($font-regular);
+}
+
+
+// Flex Classes
+.ct-flex {
+    &-row {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+
+    &-column {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    &-row-reverse {
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 20px;
+    }
+
+    &-column-reverse {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 20px;
+    }
+}
+
+.ct-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex: auto;
+
+    &-inner {
+        width: 100%;
+        max-width: 1440px;
+        padding: 30px 60px;
+        flex: auto;
+        max-height: 100vh;
+
+    }
+}
+
+.task-container {
+    overflow: auto;
+    max-height: 100%;
+    flex: auto;
+    border: 1px solid $gray;
+}
+
+.ct-heading {
+    &-1 {
+        font-size: 2rem;
+        @include font-style($font-bold);
+        color: $black;
+    }
+
+    &-2 {
+        font-size: 1.5rem;
+        @include font-style($font-bold);
+        color: $black;
+    }
+}
+
+// customize scrollbar
+.task-container::-webkit-scrollbar {
+    width: 4px;
+    background-color: $gray;
+}
+
+.task-container::-webkit-scrollbar-thumb {
+    background-color: $green;
+    border-radius: 10px;
+}
+
+.task-container::-webkit-scrollbar-thumb:hover {
+    background-color: $red;
+}
+
+.task-container::-webkit-scrollbar-track {
+    background-color: $gray;
+}
+
+// Padding & Margin Utilities from 0px to 50px
+@mixin padding-margin-utilities {
+    @for $i from 0 through 50 {
+        .p-#{$i} {
+            padding: #{$i}px;
+        }
+
+        .pt-#{$i} {
+            padding-top: #{$i}px;
+        }
+
+        .pr-#{$i} {
+            padding-right: #{$i}px;
+        }
+
+        .pb-#{$i} {
+            padding-bottom: #{$i}px;
+        }
+
+        .pl-#{$i} {
+            padding-left: #{$i}px;
+        }
+
+        .px-#{$i} {
+            padding-left: #{$i}px;
+            padding-right: #{$i}px;
+        }
+
+        .py-#{$i} {
+            padding-top: #{$i}px;
+            padding-bottom: #{$i}px;
+        }
+
+        .m-#{$i} {
+            margin: #{$i}px;
+        }
+
+        .mt-#{$i} {
+            margin-top: #{$i}px;
+        }
+
+        .mr-#{$i} {
+            margin-right: #{$i}px;
+        }
+
+        .mb-#{$i} {
+            margin-bottom: #{$i}px;
+        }
+
+        .ml-#{$i} {
+            margin-left: #{$i}px;
+        }
+
+        .mx-#{$i} {
+            margin-left: #{$i}px;
+            margin-right: #{$i}px;
+        }
+
+        .my-#{$i} {
+            margin-top: #{$i}px;
+            margin-bottom: #{$i}px;
+        }
+
+        .radius-#{$i} {
+            border-radius: #{$i}px;
+        }
+    }
+}
+
+// Call the mixin
+@include padding-margin-utilities;
+
+.ct-width {
+    &-full {
+        width: 100%;
+    }
+
+    &-three-quarters {
+        width: 75%;
+    }
+
+    &-half {
+        width: 50%;
+    }
+
+    &-third {
+        width: 33.33%;
+    }
+
+    &-quarter {
+        width: 25%;
+    }
+}
+
+.ct-border {
+    &-none {
+        border: none;
+    }
+
+    &-solid {
+        border: 1px solid $black;
+    }
+
+    &-dashed {
+        border: 1px dashed $black;
+    }
+
+    &-dotted {
+        border: 1px dotted $black;
+    }
+
+    &-double {
+        border: 2px double $black;
+    }
+}
+
+button {
+    cursor: pointer;
+}
+
+.task {
+    &-id {
+        width: 15%;
+    }
+
+    &-name {
+        width: 35%;
+    }
+
+    &-status {
+        width: 15%;
+    }
+
+    &-update {
+        width: 20%;
+    }
+
+    &-delete {
+        width: 15%;
+    }
+
+}
+
+.task-table {
+    &-header {
+        @include font-style($font-bold);
+    }
+}
+
+.ct-task-table-repeat {
+    padding: 10px;
+    background: $gray;
+    align-items: center;
+
+    &:nth-child(even) {
+        background: $white;
+    }
+
+    &.task-done {
+        background: #00ff0017;
+
+        &:nth-child(odd) {
+            background: #00ff0036;
+        }
+    }
+}
+
+.ct-action-button {
+    border: none;
+
+    &-danger {
+        background: $cyan !important;
+        color: $black !important;
+    }
+}
+
+.ct-action-button:not(.bg-red) {
+    background: $black;
+    color: $white;
+}
+
+.success-box {
+    padding: 20px;
+    margin: auto;
+    margin-top: 40px;
+    width: max-content;
+    border-radius: 15px;
+
+    &.add {
+        background: #00ff0036;
+        color: $green;
+    }
+
+    &>.task-note {
+        font-size: 22px;
+        margin-bottom: 5px;
+
+        &>strong {
+            font-size: 22px;
+        }
+    }
+
+    &>p:not(.task-note) {
+        padding-left: 27px;
+        & > *{
+            color: $green!important;
+        }
+    }
+    &.update{
+        background: #00ffff5c;
+        & > *{
+            color: $black!important;
+        }
+    }
+    &.delete{
+        background: #ff000038;
+        & > *{
+            color: $red!important;
+        }
+    }
+
+}

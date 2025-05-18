@@ -1,0 +1,169 @@
+// 1. Font Faces: Ancizar Sans (100–900, normal & italic)
+@font-face {
+  font-family: 'Ancizar Sans';
+  src: url('/fonts/AncizarSans-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ancizar Sans';
+  src: url('/fonts/AncizarSans-ThinItalic.ttf') format('truetype');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ancizar Sans';
+  src: url('/fonts/AncizarSans-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ancizar Sans';
+  src: url('/fonts/AncizarSans-ExtraLightItalic.ttf') format('truetype');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ancizar Sans';
+  src: url('/fonts/AncizarSans-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ancizar Sans';
+  src: url('/fonts/AncizarSans-LightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ancizar Sans';
+  src: url('/fonts/AncizarSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ancizar Sans';
+  src: url('/fonts/AncizarSans-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ancizar Sans';
+  src: url('/fonts/AncizarSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ancizar Sans';
+  src: url('/fonts/AncizarSans-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ancizar Sans';
+  src: url('/fonts/AncizarSans-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ancizar Sans';
+  src: url('/fonts/AncizarSans-SemiBoldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ancizar Sans';
+  src: url('/fonts/AncizarSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ancizar Sans';
+  src: url('/fonts/AncizarSans-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ancizar Sans';
+  src: url('/fonts/AncizarSans-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ancizar Sans';
+  src: url('/fonts/AncizarSans-ExtraBoldItalic.ttf') format('truetype');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ancizar Sans';
+  src: url('/fonts/AncizarSans-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ancizar Sans';
+  src: url('/fonts/AncizarSans-BlackItalic.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+// 2. SCSS Font Variables
+$font-ancizar: 'Ancizar Sans', sans-serif;
+
+$font-thin: 100;
+$font-extralight: 200;
+$font-light: 300;
+$font-regular: 400;
+$font-medium: 500;
+$font-semibold: 600;
+$font-bold: 700;
+$font-extrabold: 800;
+$font-black: 900;
+
+// 3. Utility Classes
+.font-thin { font-weight: $font-thin; font-family: $font-ancizar; }
+.font-extralight { font-weight: $font-extralight; font-family: $font-ancizar; }
+.font-light { font-weight: $font-light; font-family: $font-ancizar; }
+.font-regular { font-weight: $font-regular; font-family: $font-ancizar; }
+.font-medium { font-weight: $font-medium; font-family: $font-ancizar; }
+.font-semibold { font-weight: $font-semibold; font-family: $font-ancizar; }
+.font-bold { font-weight: $font-bold; font-family: $font-ancizar; }
+.font-extrabold { font-weight: $font-extrabold; font-family: $font-ancizar; }
+.font-black { font-weight: $font-black; font-family: $font-ancizar; }
+
+.italic { font-style: italic; }
+.normal { font-style: normal; }
+
+// 4. Font Mixin
+@mixin font-style($weight: 400, $italic: false) {
+  font-family: $font-ancizar;
+  font-weight: $weight;
+  font-style: if($italic == true, italic, normal);
+}
