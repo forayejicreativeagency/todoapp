@@ -149,7 +149,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"], $_POST["tas
                     <div class="task-container">
                         <?php
                         $tasks = json_decode(file_get_contents(TASK_PATH), true);
-                        if (empty($tasks)) { ?>
+                        if (empty(sort(array: $tasks))) { ?>
                             <p class="ct-width-full p-20" style="text-align: center; font-weight: 600; font-size: 20px;">Taskbox is empty. Please add a task through the task form first.</p>
                         <?php  } else { ?>
                             <?php

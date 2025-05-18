@@ -27,7 +27,7 @@
     {
         "taskID": 869697,
         "task": "Plan weekend trip",
-        "done": true
+        "done": false
     },
     {
         "taskID": 948512,
@@ -72,7 +72,7 @@
     {
         "taskID": 210569,
         "task": "Set up team meeting",
-        "done": false
+        "done": true
     },
     {
         "taskID": 489704,
