@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["task"]) && !empty(tri
         $_SESSION['message'] = "Error: " . $e->getMessage();
         $_SESSION['type'] = "error";
 
-         header("Location: success.php");
+        header("Location: success.php");
         exit;
     }
 }
@@ -149,7 +149,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"], $_POST["tas
                     <div class="task-container">
                         <?php
                         $tasks = json_decode(file_get_contents(TASK_PATH), true);
-                        if (empty(sort(array: $tasks))) { ?>
+
+                        // Simple data shorting
+                        sort($tasks);
+
+                        // Data shorting reverse
+                        // rsort($tasks);
+
+                        // Sort data by field name
+                        /* usort($tasks, function ($a, $b) {
+                            return strcmp($a["task"], $b["task"]);
+                        });
+                        */
+                        
+                        
+                        // Sort data by field name in reverse
+                        /* usort($tasks, function ($a, $b) {
+                            return strcmp($b["task"], $a["task"]);
+                        });
+                        */
+
+
+                        if (empty($tasks)) { ?>
                             <p class="ct-width-full p-20" style="text-align: center; font-weight: 600; font-size: 20px;">Taskbox is empty. Please add a task through the task form first.</p>
                         <?php  } else { ?>
                             <?php
