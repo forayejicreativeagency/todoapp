@@ -329,5 +329,11 @@ button {
             color: $red!important;
         }
     }
+    &.error{
+        background: #ff000038;
+        & > *{
+            color: $red!important;
+        }
+    }
 
 }

@@ -3734,4 +3734,10 @@ button {
 }
 .success-box.delete > * {
   color: #ff0000 !important;
+}
+.success-box.error {
+  background: rgba(255, 0, 0, 0.2196078431);
+}
+.success-box.error > * {
+  color: #ff0000 !important;
 }/*# sourceMappingURL=main.css.map */

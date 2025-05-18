@@ -21,6 +21,9 @@ switch ($type) {
     case 'delete':
         $pageTitle = "Task Deleted";
         break;
+    case 'error':
+        $pageTitle = "Something Wrong";
+        break;
     default:
         $pageTitle = "Success";
 }

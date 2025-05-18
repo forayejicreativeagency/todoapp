@@ -11,25 +11,38 @@ if (!is_dir($dir)) {
 
 // Handle add task
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["task"]) && !empty(trim($_POST["task"]))) {
-    $task = [
-        "taskID" => random_int(100000, max: 999999), // 6-character unique ID
-        "task" => htmlspecialchars_decode(trim($_POST["task"])),
-        "done" => false,
-    ];
+    try {
+        $task = [
+            "taskID" => random_int(100000, 999999), // 6-character unique ID
+            "task" => htmlspecialchars_decode(trim($_POST["task"])),
+            "done" => false,
+        ];
 
-    $tasks = [];
-    if (file_exists(TASK_PATH)) {
-        $tasks = json_decode(file_get_contents(TASK_PATH), true) ?? [];
+        $tasks = [];
+        if (file_exists(TASK_PATH)) {
+            $tasks = json_decode(file_get_contents(TASK_PATH), true) ?? [];
+        }
+
+        $tasks[] = $task;
+
+        if (file_put_contents(TASK_PATH, json_encode($tasks, JSON_PRETTY_PRINT)) === false) {
+            throw new Exception("Failed to write to task file.");
+        }
+
+        $_SESSION['message'] = "Task added successfully!";
+        $_SESSION['type'] = "add";
+
+        header("Location: success.php");
+        exit;
+    } catch (Exception $e) {
+        $_SESSION['message'] = "Error: " . $e->getMessage();
+        $_SESSION['type'] = "error";
+
+         header("Location: success.php");
+        exit;
     }
-    $tasks[] = $task;
-    file_put_contents(TASK_PATH, json_encode($tasks, JSON_PRETTY_PRINT));
-
-    $_SESSION['message'] = "Task added successfully!";
-    $_SESSION['type'] = "add";
-
-    header("Location: success.php");
-    exit;
 }
+
 
 // Handle delete or toggle status
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"], $_POST["taskID"])) {
